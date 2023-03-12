@@ -1,0 +1,118 @@
+
+.header {
+	height: 40px;
+	background-color: #fff;
+	padding: 0;
+	position: relative;
+	z-index: 2;
+	font-size: 12px;
+	@include box-shadow(0 0 10px rgba(0, 0, 0, .25));
+	li {
+		position: relative;
+		color: $textGray;
+		a, span {
+			display: block;
+		}
+	}
+	li img {
+		height: 40px;
+		width: auto;
+		display: block;
+	}
+	a, .appDonload span {
+		display: block;
+		color: #a9a9a9;
+		text-decoration: none;
+	}
+	li.note,
+	li.appDonload,
+	li.social {
+		padding: 17px 2px 0;
+	}
+	li.appDonload {
+		padding: 17px 7px 0;
+		cursor: pointer;
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+		span {
+			color: #dd0202;
+		}
+		.appQRcode {
+			position: absolute;
+			z-index: 9999;
+			top: 100%;
+			width: 160px;
+			right: -9px;
+			padding: 8px;
+			background: #fff;
+			@include box-shadow(4px 4px 5px rgba(0, 0, 0, 0.15));
+			border: 1px solid rgba(0, 0, 0, .15);
+			border-radius: 4px;
+			display: none;
+		}
+	}
+	li.appDonload::before, li.appDonload::after {
+		content: '';
+		position: absolute;
+		width: 1px;
+		height: 15px;
+		background-color: #ccc;
+		bottom: 6px;
+		left: 2px;
+	}
+	li.appDonload::after {
+		left: auto;
+		right: 2px;
+	}
+	li.appDonload:hover .appQRcode {
+		display: block;
+	}
+	li.appDonload:hover span {
+		color: #039ce1;
+	}
+	li.icons {
+		padding: 2px 0 0 2px;
+		a {
+			display: inline-block;
+		}
+		img {
+			width: 25px;
+		}
+	}
+	.mb {
+		display: none !important;
+		img {
+			height: 25px;
+		}
+	}
+}
+@media only screen and (max-width: 1024px) {
+	.header {
+		li {
+			margin-top: -2px;
+			@include transform (scale(0.92));
+		}
+		li:nth-child(1) {
+			margin-right: -30px;
+		}
+		li.appDonload .appQRcode {
+			margin-top: 2px;
+		}
+	}
+
+}
+@media only screen and (max-width: 1023px) {
+	.header {
+		box-shadow: 0;
+		.pc { display: none; }
+		.mb {
+			display: inherit !important;
+			margin: 0;
+		}
+	}
+
+}
+

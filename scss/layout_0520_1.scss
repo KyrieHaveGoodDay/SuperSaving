@@ -1,0 +1,775 @@
+@charset "UTF-8";
+@import "_mixins.scss";
+@import "_reset.scss";
+@import "_load.scss";
+
+
+* {
+  @include box-sizing(border-box);
+  font-family: "微軟正黑體", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+html,
+body {
+  background-color: #fff !important;
+  color: $textGray;
+  font-family: "微軟正黑體", Arial, Helvetica, sans-serif;
+  position: relative;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* ---------- 載入  ----------*/
+@import "_iconAni.scss";
+//header功能選單
+@import "_header.scss";
+//左右側邊選單
+@import "_subMenu.scss";
+//版身商品
+@import "_promoPD.scss";
+//警語，版權，appDownload
+@import "_footer.scss";
+
+/* ---------- 共用  ----------*/
+.arrow {
+  border: solid rgba(255, 255, 255, 0.7);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: -5px;
+}
+.arRight {
+  @include transform(rotate(-45deg));
+}
+.arLeft {
+  @include transform(rotate(135deg));
+}
+.arUp {
+  @include transform(rotate(-135deg));
+}
+
+.overhide {
+  overflow: hidden;
+}
+.show {
+  display: block !important;
+}
+.radius_S {
+  @include border-radius(4px);
+}
+.radius_M {
+  @include border-radius(10px !important);
+}
+.radius_M_top {
+  @include border-radius(10px 10px 0 0);
+}
+.radius_M_bottom {
+  @include border-radius(0 0 10px 10px);
+}
+.radius_L {
+  @include border-radius(13px);
+}
+.d-block {
+  width: 100%;
+}
+.hoverACT {
+  // position: relative;
+  margin-top: 0;
+  @include transition(0.3s);
+  &:hover {
+    margin-top: -10px;
+  }
+}
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+}
+
+//右側固定連結
+@keyframes hvr-bob {
+  0% {
+    @include transform(translateY(-15px));
+  }
+  50% {
+    @include transform(translateY(2.5px));
+  }
+  100% {
+    @include transform(translateY(-15px));
+  }
+}
+
+@mixin bob {
+  transform: perspective(1px) translateZ(0px);
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation: hvr-bob 3.5s infinite;
+}
+.schedule {
+  position: fixed;
+  z-index: 10;
+  width: 70px;
+  right: 5px;
+  bottom: 2rem;
+  img {
+    width: 100%;
+    @include bob;
+  }
+}
+
+/* --------------------*/
+.wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  .container {
+    width: 1140px;
+    max-width: 93%;
+    margin: 40px auto 50px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    @include border-radius(20px);
+    h3 {
+      width: 600px;
+      max-width: 95%;
+      text-align: center;
+      margin: 0 auto 1.5rem;
+      img {
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    display: block;
+  }
+  .section {
+    width: 100%;
+    position: relative;
+    padding: 2rem 0;
+  }
+}
+.kv {
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  // 箭頭
+  .all_arrow{
+    position: absolute;
+    top: 46%;
+    transform: translateY(-46%);
+    width: 5%;
+    z-index: 5;
+    cursor: pointer;
+    @media screen and(max-width:767px) {
+      width: 8%;
+      // bottom: 10%;
+      top: 78%;
+    }
+  }
+  .arrow_prev{
+    right: 38%;
+    @media screen and(max-width:767px) {
+      right: 92%;
+    }
+  }
+  .arrow_next{
+    right: 2%;
+  }
+  .slider_box {
+    width: 36%;
+    position: absolute;
+    top: 0;
+    right: 4.5%;
+    .swiper-pagination {
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      text-align: left;
+      padding-left: 30px;
+    }
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      margin: 0 3px;
+    }
+    .swiper-pagination-bullet-active {
+      background: #ffffff;
+    }
+    .swiper-pagination-bullet {
+      border: 0;
+      background: #fff;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      z-index: 5;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    img.mb {
+      display: none !important;
+    }
+  }
+  img.kv_mb {
+    display: none !important;
+  }
+}
+.marquee {
+  margin: 0 auto !important;
+  border: 3px solid #162a7f;
+  overflow: hidden;
+  height: 70px;
+  @include border-radius(5px !important);
+  .row {
+    margin: 0;
+  }
+  .title {
+    width: 180px;
+    background: #ff4d4d;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 10px 3px;
+    border-right: 3px solid #070002;
+  }
+  .slider_text {
+    width: calc(100% - 180px);
+    height: 100%;
+    background: #ffafaf;
+    padding: 15px 10px 15px 15px;
+    @include border-radius(0 5px 5px 0);
+  }
+  a {
+    color: #162a7f;
+    font-size: 1.4rem;
+  }
+  a.mb {
+    display: none;
+  }
+}
+/*--- 折價券 ---*/
+#coupon {
+  margin: 0px auto;
+  ul {
+    li {
+      margin-top: 0.5rem !important;
+      @media screen and(max-width:767px) {
+        margin-top: 1rem !important;
+        // transform: rotate();
+      }
+    }
+  }
+  a {
+    position: relative;
+    img {
+      @include transition(0.3s all);
+    }
+    &:hover img {
+      margin-top: -7px;
+    }
+  }
+  .text {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.6rem;
+    font-style: italic;
+    color: rgb(29, 29, 29);
+    &.color-01 {
+      color: #2ca145;
+    }
+    &.color-02 {
+      color: #b64fc9;
+    }
+    &.color-03 {
+      color: #b59022;
+    }
+    &.color-04 {
+      color: #df7171;
+    }
+    &.color-05 {
+      color: #608ac8;
+    }
+    &.color-06 {
+      color: #e48a33;
+    }
+    &.color-07 {
+      color: #73b02c;
+    }
+    &.color-08 {
+      color: #987f9d;
+    }
+  }
+  small {
+    vertical-align: 0;
+    font-size: 60%;
+    font-weight: inherit;
+  }
+  strong {
+    vertical-align: 0;
+    font-size: 120%;
+    font-weight: 800;
+  }
+}
+/*--- 優惠快報banner ---*/
+#event_banner {
+  background-color: #f36921;
+  a {
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #fff;
+    @include border-radius(15px);
+  }
+  ul {
+    margin: 0 -5px -5px;
+    li {
+      margin: 0;
+      padding: 0 10px 15px;
+    }
+  }
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../img/timeout.png") 50% 50% no-repeat rgba(0, 0, 0, 0.6);
+    background-size: 250px;
+    display: none;
+    &.comingsoon {
+      background: url(../img/trailer.png) 50% 50% no-repeat rgba(0, 0, 0, 0.6);
+      background-size: 250px;
+      display: block;
+    }
+  }
+  .show {
+    display: block;
+  }
+}
+/*--- 熱搜關鍵詞 ---*/
+#taglink {
+  background: #5f5f5f;
+  .container {
+    margin: 0 auto;
+  }
+  p {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  a {
+    background-color: #ff6860;
+    display: inline-block;
+    color: #fff;
+    padding: 5px 8px;
+    margin: 0 3px 10px 0;
+    font-size: 1.4rem;
+    border-radius: 3px;
+    @include transition(0.2s);
+  }
+}
+
+@media only screen and (max-width: 1279px) {
+  #coupon .text {
+    top: 2.6vw;
+    font-size: 3.2vw;
+  }
+}
+@media only screen and (max-width: 768px) {
+  html,
+  body {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  #event_banner .mask {
+    background-size: 55%;
+  }
+  .marquee {
+    height: 60px;
+    .title {
+      width: 120px;
+      font-size: 1.4rem;
+    }
+    .slider_text {
+      width: calc(100% - 120px);
+      a {
+        font-size: 1.2rem;
+      }
+      a.pc {
+        display: none;
+      }
+      a.mb {
+        display: block;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .wrap {
+    background-size: 100% !important;
+    .container {
+      margin: 0 auto;
+    }
+  }
+  .kv {
+    .slider_box {
+      position: relative;
+      width: 95%;
+      // margin-top: 15% !important;
+      img.pc {
+        display: none !important;
+      }
+      img.mb {
+        display: block !important;
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 25px;
+        height: 25px;
+        background-size: 100%;
+        right: 0;
+      }
+      .swiper-button-prev {
+        right: auto;
+        left: 0;
+      }
+    }
+    img.kv_pc {
+      display: none !important;
+    }
+
+    img.kv_mb {
+      display: block !important;
+    }
+    .kv_0427 {
+      width: 85% !important;
+      margin: 0 auto;
+    }
+  }
+  .marquee {
+    height: 45px;
+    background: #fff;
+    .title {
+      width: 80px;
+      font-size: 1rem;
+      padding: 9px 3px 0;
+    }
+    .slider_text {
+      width: calc(100% - 80px);
+      padding: 8px 5px 5px 10px;
+      a {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+  }
+  #coupon {
+    ul {
+      margin: 0 -5px;
+    }
+    li {
+      padding: 0 5px;
+    }
+    .text {
+      top: 5vw;
+      font-size: 7.2vw;
+    }
+  }
+  #taglink {
+    p {
+      font-size: 1.4rem;
+    }
+    a {
+      font-size: 1.2rem;
+    }
+  }
+  .schedule {
+    bottom: 7.5rem;
+  }
+}
+
+body,
+div,
+span,
+h1,
+p,
+a,
+img,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+.inset {
+  text-align: center;
+}
+.inset a {
+  color: #06c;
+  font: 11px/20px normal;
+}
+.logotype a {
+  display: block;
+  width: 186px;
+  height: 60px;
+  text-indent: -9999px;
+}
+#HEADER .logotype a {
+  background: url();
+}
+#HEADER {
+  position: relative;
+  height: 60px;
+  width: 930px;
+  margin: 0 auto;
+  margin-bottom: 6px;
+  border: 1px solid #e0e0e0;
+  border-bottom: 0;
+  background: url() repeat-x;
+}
+#HEADER a {
+  display: block;
+  position: absolute;
+}
+#HEADER .site_roadsign {
+  width: 68px;
+  height: 65px;
+  left: 186px;
+  top: 0;
+  text-indent: -9999px;
+}
+#HEADER .site_ad {
+  left: 312px;
+  top: 16px;
+  border: 1px solid #ddd;
+}
+#FOOTER {
+  margin: 10px 0 20px;
+  color: #777;
+  font: 13px/1.5 Verdana;
+  text-align: center;
+}
+#FOOTER a {
+  color: #333;
+  font: 13px/1.5 Verdana;
+}
+#FOOTER span {
+  margin: 0 4px;
+  color: #999;
+  font: 12px/1.5 Verdana;
+}
+#GLOBALWRAPPER,
+#WRAPPER {
+  margin: 0 auto;
+}
+#GLOBALWRAPPER {
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+
+// 輪播手機版
+.mb_slide {
+  width: 78%;
+  margin: 0 auto;
+}
+.dk_slide {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.hide767 {
+  @media screen and(max-width:767px) {
+    display: none;
+  }
+}
+// 主標
+.main_title {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  @media screen and(max-width:767px) {
+    width: 100%;
+  }
+  // overflow: hidden;
+  .discount {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+  }
+  .discount_mb1 {
+    display: none;
+    @media screen and(max-width:767px) {
+      display: block;
+      position: relative;
+      z-index: 5;
+      width: 100%;
+    }
+  }
+  .frame {
+    position: absolute;
+    right: -17%;
+    top: 9%;
+    z-index: 1;
+    width: 62%;
+    @media screen and(max-width:767px) {
+      right: 2%;
+      top: 12%;
+      z-index: 1;
+      width: 43%;
+    }
+  }
+  .phone {
+    position: absolute;
+    left: 7%;
+    bottom: -7%;
+    width: 18%;
+  }
+  // 網家經濟學
+  .text1 {
+    position: absolute;
+    width: 10%;
+    right: 33%;
+    top: 17%;
+    z-index: 2;
+    @media screen and(max-width:767px) {
+      width: 8%;
+      right: 37%;
+      top: 15%;
+    }
+  }
+  .text2 {
+    position: absolute;
+    width: 10%;
+    right: 20%;
+    top: 23%;
+    z-index: 2;
+    @media screen and(max-width:767px) {
+      width: 8%;
+      right: 27%;
+      top: 23%;
+    }
+  }
+  .text3 {
+    position: absolute;
+    width: 10%;
+    right: 11.5%;
+    top: 27%;
+    z-index: 2;
+    @media screen and(max-width:767px) {
+      width: 8%;
+      right: 20.5%;
+      top: 27%;
+    }
+  }
+  .text4 {
+    position: absolute;
+    width: 10%;
+    right: 2.5%;
+    top: 30.5%;
+    z-index: 2;
+    @media screen and(max-width:767px) {
+      width: 8%;
+      right: 13.5%;
+      top: 30.5%;
+    }
+  }
+  .text5 {
+    position: absolute;
+    width: 10%;
+    right: -6.5%;
+    top: 34%;
+    z-index: 2;
+    @media screen and(max-width:767px) {
+      width: 8%;
+      right: 6.5%;
+      top: 34%;
+    }
+  }
+  // 大標
+  .title_1 {
+    position: absolute;
+    width: 33%;
+    left: 7%;
+    top: 18%;
+    z-index: 8;
+    @media screen and(max-width:767px) {
+      width: 30%;
+      left: 11%;
+      top: 24%;
+    }
+  }
+  .title_2 {
+    position: absolute;
+    width: 33%;
+    left: 27%;
+    top: 5%;
+    z-index: 7;
+    @media screen and(max-width:767px) {
+      width: 30%;
+      left: 28%;
+      top: 13%;
+    }
+  }
+  .title_3 {
+    position: absolute;
+    width: 33%;
+    left: 34%;
+    top: 37%;
+    z-index: 6;
+    @media screen and(max-width:767px) {
+      width: 30%;
+      left: 30%;
+      top: 50%;
+    }
+  }
+  .cut_div{
+    display: none;
+    @media screen and(max-width:767px) {
+      display: block;
+      position: absolute;
+      right: 3%;
+      bottom: 0%;
+      width: 20%;
+      overflow: hidden;
+      .cut{
+        width: 100%;
+        height: 100%;
+      }
+  }
+  
+  }
+}
+
+// load
+.load-wrap{
+  background: #e4403f;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  // transform: translateX(-50%,-50%);
+  z-index: 999;
+  .loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
